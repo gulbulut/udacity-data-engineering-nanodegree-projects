@@ -1,12 +1,14 @@
 # Sparkify Project: Data Modelling with Postgres
 
 ## About the project 
+A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app.
+
 In this project, I applied what i've learned on data modeling with Postgres and build an ETL pipeline using Python. 
 
 ---
 ## Data
 
-There are two different source file for using build an ETL pipeline.
+There are two different source file for build an ETL pipeline.
 
 **Song Dataset** : The first dataset is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. 
 For example:
@@ -48,6 +50,12 @@ For example:
 ## ERD Schema
 ![image](Sparkify-Data-Modelling-with-Postgres.png)
 
+## Requirements
+- Python3
+- Run `pip install requirements.txt `
+
 ## How to Use
-- Run "python create_tables.py" command to create database and its tables.
-- Run "python etl.py" command to complete etl process.
+- Run `python create_tables.py` command to create database and its tables.
+- Run `python etl.py` command to complete etl process.
+
+## The End 
