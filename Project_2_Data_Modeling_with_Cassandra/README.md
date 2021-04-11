@@ -5,12 +5,3 @@ A startup called Sparkify wants to analyze the data they've been collecting on s
 
 In this project, I applied what i've learned on data modeling with Apache Cassandra and build an ETL pipeline using Python. 
 
----
-## Data
-
-
-## Requirements
-
-## How to Use
-
-## The End 
