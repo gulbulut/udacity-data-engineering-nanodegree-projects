@@ -61,12 +61,12 @@ Using the song and event datasets, I had need to create a star schema optimized 
   - time : start_time, hour, day, week, month, year, weekday
 
 ## Project Structure
-  `create_table.py` :  is where i created my fact and dimension tables for the star schema in Redshift.
-  `etl.py` :   is where i loaded data from S3 into staging tables on Redshift and then processed that data into my analytics tables on Redshift.
-  `sql_queries.py` : is where i defined SQL statements, which imported into the two other files above.
-  `dwh.cfg` :  is where i kept connection information for Redshift and S3.
-  `requirements.txt` :  is where i kept project requirements library above.
-  `README.md` :  is where i provided discussion on my process and decisions for this ETL pipeline.
+  - `create_table.py` :  is where i created my fact and dimension tables for the star schema in Redshift.
+  - `etl.py` :   is where i loaded data from S3 into staging tables on Redshift and then processed that data into my analytics tables on Redshift.
+  - `sql_queries.py` : is where i defined SQL statements, which imported into the two other files above.
+  - `dwh.cfg` :  is where i kept connection information for Redshift and S3.
+  - `requirements.txt` :  is where i kept project requirements library above.
+  - `README.md` :  is where i provided discussion on my process and decisions for this ETL pipeline.
 
 
 ## Requirements
