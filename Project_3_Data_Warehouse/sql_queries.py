@@ -150,12 +150,12 @@ staging_songs_copy = ("""
         COMPUPDATE OFF
         REGION 'us-west-2'
         FORMAT AS json 'auto';
-""").format(config['S3']['SONG_DATA'],config['IAM_ROLE']['ARN'])
+""").format(SONG_DATA,IAM_ROLE)
 
 # FINAL TABLES
 
 songplay_table_INSERT = ("""
-        INSERT into songplay (start_time,user_id,level,song_id,artist_id,session_id,location,user_agent)
+        INSERT into songplays (start_time,user_id,level,song_id,artist_id,session_id,location,user_agent)
         select
         events.ts start_time,
         events.userId user_id,
@@ -165,7 +165,7 @@ songplay_table_INSERT = ("""
         events.sessionId session_id,
         events.location,
         events.userAgent user_agent
-        from stg_events events inner join stg_songs songs
+        from staging_events events inner join staging_songs songs
         on events.song=songs.title
         and events.artist=songs.artist_name
         where events.page='NextSong'
@@ -179,7 +179,7 @@ user_table_INSERT = ("""
         lastName,
         gender,
         level
-        from stg_events
+        from staging_events
         where UserId is not null
         and page='NextSong'
 """)
@@ -192,7 +192,7 @@ song_table_INSERT = ("""
         artist_id,
         year,
         duration
-        from stg_songs
+        from staging_songs
         where song_id is not null
 """)
 
@@ -202,9 +202,9 @@ artist_table_INSERT= ("""
         artist_id,
         artist_name,
         artist_location,
-        artist_latitude,f
+        artist_latitude,
         artist_longitude
-        from stg_songs
+        from staging_songs
         where artist_id is not null
 """)
 
@@ -218,7 +218,7 @@ time_table_INSERT = ("""
         extract(month from ts),
         extract(year from ts),
         extract(weekday from ts)
-        from stg_events
+        from staging_events
         where ts is not null
         and page='NextSong'
 """)
