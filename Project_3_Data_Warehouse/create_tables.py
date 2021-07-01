@@ -17,7 +17,7 @@ def create_tables(cur, conn):
 
 def main():
     config = configparser.ConfigParser()
-    config.read('dwh.cfg')
+    config.read('/home/gulbulut/repos/udacity-data-engineering-nanodegree-projects/Project_3_Data_Warehouse/dwh.cfg')
 
     conn = psycopg2.connect("host={} dbname={} user={} password={} port={}".format(*config['CLUSTER'].values()))
     cur = conn.cursor()

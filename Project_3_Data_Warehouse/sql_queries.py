@@ -3,7 +3,14 @@ import configparser
 
 # CONFIG
 config = configparser.ConfigParser()
-config.read('dwh.cfg')
+config.read('/home/gulbulut/repos/udacity-data-engineering-nanodegree-projects/Project_3_Data_Warehouse/dwh.cfg')
+
+LOG_DATA = config.get("S3","LOG_DATA")
+LOG_JSONPATH = config.get("S3", "LOG_JSONPATH")
+SONG_DATA = config.get("S3", "SONG_DATA")
+IAM_ROLE = config.get("IAM_ROLE","ARN")
+
+print(LOG_JSONPATH)
 
 # DROP TABLES
 
@@ -120,7 +127,7 @@ time_table_create = ("""
 # STAGING TABLES
 
 staging_events_copy = ("""
-        COPY stg_events
+        COPY staging_events
         FROM {}
         IAM_ROLE {}
         TIMEFORMAT as 'epochmillisecs'
@@ -130,10 +137,10 @@ staging_events_copy = ("""
         COMPUPDATE OFF
         REGION 'us-west-2'
         FORMAT AS json {};
-""").format(config['S3']['LOG_DATA'],config['IAM_ROLE']['ARN'],config['S3']['LOG_JSONPATH'])
+""").format(LOG_DATA, IAM_ROLE, LOG_JSONPATH)
 
 staging_songs_copy = ("""
-        COPY stg_songs
+        COPY staging_songs
         FROM {}
         IAM_ROLE {}
         TIMEFORMAT as 'epochmillisecs'
